@@ -86,14 +86,32 @@
 // }
 // callWaitForHello()
 
-async function getFact() {
-    const res = await fetch("http://catfact.ninja/fact")
-    console.log(res.ok)
+// async function getFact() {
 
-    console.log(res.json)
-    const data = await res.json()
-    console.log(data)
+//     const res = await fetch("http://catfact.ninja/fact")
+//     console.log(res.ok)
+//     console.log(res.json)
+//     const data = await res.json()
+//     console.log(data)
+
+// }
+// getFact()
+
+async function getJoke() {
+    try {
+        const res = await fetch("https://catfact.ninja/fact")
+        const joke = await res.json()
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`)
+        }
+        console.log(joke.fact.includes("a"))
+        console.log(joke.fact)
+    }
+    catch (error) {
+        console.log("Error fetching joke:", error.message)
+    }
 }
+getJoke()
 
-getFact()
 
