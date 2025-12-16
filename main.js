@@ -73,15 +73,27 @@
 // Print the result.
 // Call waitForHello().
 
-function waitForHello() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("Hello")
-        }, 500)
-    })
+// function waitForHello() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve("Hello")
+//         }, 500)
+//     })
+// }
+// async function callWaitForHello() {
+//     const result = await waitForHello()
+//     console.log(result)
+// }
+// callWaitForHello()
+
+async function getFact() {
+    const res = await fetch("http://catfact.ninja/fact")
+    console.log(res.ok)
+
+    console.log(res.json)
+    const data = await res.json()
+    console.log(data)
 }
-async function callWaitForHello() {
-    const result = await waitForHello()
-    console.log(result)
-}
-callWaitForHello()
+
+getFact()
+
